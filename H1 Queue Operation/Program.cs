@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace H1_Queue_Operation
 {
@@ -18,9 +19,9 @@ namespace H1_Queue_Operation
                         Console.WriteLine
                         (
                          "============================================\n" +
-                         "                H1 Queue Operation Menu     \n" +
+                         "         H1 Queue Operation Menu           \n" +
                         "============================================\n" +
-                        "\n  " +
+                        "\n1. Add item" +
                         "\n2. Delete items " +
                         "\n3. Show the number of items" +
                         "\n4. Show min and max items " +
@@ -32,43 +33,50 @@ namespace H1_Queue_Operation
                         menu = int.Parse(Console.ReadLine());
                         break;
                     case 1:
+                        Console.Clear();
                         Console.WriteLine("What is your name");
                         string name = Console.ReadLine();
                         Console.WriteLine("What is your age");
                         int age = int.Parse(Console.ReadLine());
                         manager.AddItems(name,age);
-
-                        Console.WriteLine("0. Back to menu " + "6. Exit Program");
+                        Console.WriteLine(name, age +" Has been added to the queue");
+                        Console.WriteLine("\n0. Back to menu " + "6. Exit Program");
                         menu = int.Parse(Console.ReadLine());
                         break;
                     case 2:
-
+                        Console.Clear();
+                        Console.WriteLine("1 item has been dequeued");
                         manager.DeleteItems();
-                        Console.WriteLine("0. Back to menu " + "6. Exit Program");
+                        Console.WriteLine("\n0. Back to menu " + "6. Exit Program");
                         menu = int.Parse(Console.ReadLine());
                         break;
                     case 3:
-                        manager.ShowNumItem();
-                        Console.WriteLine("0. Back to menu " + "6. Exit Program");
+                        Console.Clear();
+                        Console.WriteLine("All items in queue: ");
+                        Console.WriteLine(manager.ShowNumItem()); 
+                        Console.WriteLine("\n0. Back to menu " + "6. Exit Program");
                         menu = int.Parse(Console.ReadLine());
 
                         break;
                     case 4:
-                        manager.ShowMinMax();
-                        Console.WriteLine("0. Back to menu " + "6. Exit Program");
+                        Console.Clear();
+                        Console.WriteLine(manager.ShowMinMax()); 
+                        Console.WriteLine("\n0. Back to menu " + "6. Exit Program");
                         menu = int.Parse(Console.ReadLine());
 
                         break;
                     case 5:
+                        Console.Clear();
                         Console.WriteLine("Put in the name you want to look for");
-                        string search = Console.ReadLine(); 
-                        manager.FindItem(search);
-                        Console.WriteLine("0. Back to menu " + "6. Exit Program");
+                        string search = Console.ReadLine();
+                        Console.WriteLine(manager.FindItem(search)); 
+                        Console.WriteLine("\n0. Back to menu " + "6. Exit Program");
                         menu = int.Parse(Console.ReadLine());
                         break;
                     case 6:
-                        manager.AllItems();
-                        Console.WriteLine("0. Back to menu " + "6. Exit Program");
+                        Console.Clear();
+                        Console.WriteLine(manager.AllItems());
+                        Console.WriteLine("\n0. Back to menu " + "6. Exit Program");
                         menu = int.Parse(Console.ReadLine());
                         break;
 

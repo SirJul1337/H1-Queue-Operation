@@ -7,6 +7,18 @@ namespace H1_Queue_Operation
     public class QueueManager
     {
         Queue <Queue> queueList = new Queue <Queue> ();
+
+        public QueueManager()
+        {
+            Queue Camilla = new Queue("Camilla", 20);
+            Queue Niklas = new Queue("Niklas", 18);
+            Queue Anders = new Queue("Anders", 67);
+
+            queueList.Enqueue (Camilla);
+            queueList.Enqueue (Niklas);
+            queueList.Enqueue (Anders);
+        }
+
         public void AddItems(string name, int age)
         {
             Queue queue = new Queue(name, age);
@@ -23,10 +35,13 @@ namespace H1_Queue_Operation
             return queueList.Count;
         }
 
-        public (string, string Name, int Age) ShowMinMax()
+        public string ShowMinMax()
         {
+            Queue [] queueArr = queueList.ToArray ();
+            Queue last = queueArr [queueArr.Length - 1];
             Queue peek = queueList.Peek();
-            return ("Next in queue is {0} {1}", peek.Name, peek.Age);
+            string output = "First in queue " +peek.Name+" "+peek.Age+ "\nLast in queue "+ last.Name+" "+ last.Age;
+            return output;
         }
 
         public string FindItem(string search)
@@ -41,9 +56,14 @@ namespace H1_Queue_Operation
             return search+" Wasn't found";
         }
 
-        public Queue<Queue> AllItems()
+        public string AllItems()
         {
-            return queueList;
+            string output = "";
+            foreach(Queue item in queueList)
+            {
+                output += "\n"+item.Name+" "+ item.Age;
+            }
+            return output;
         }
 
     }
